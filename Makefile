@@ -6,7 +6,7 @@ KERNEL_VERSION:=4.9.6
 #$(shell uname -r)
 #
 
-KERNEL_SRCS:=../../fuse/buildroot-2017.02.2/output/build/linux-4.9.6
+KERNEL_SRCS:=../fuse/buildroot-2017.02.2/output/build/linux-4.9.6
 
 #/lib/modules/$(KERNEL_VERSION)/build
 #/home/unencr/Prog_projects/fuse/Linux_kernel/linux1
