@@ -24,9 +24,8 @@ MODULE_PARM_DESC(prints_count, "An integer , prints_count");
 
 volatile int num_of_prints = 0;
 static const int delay_in_seconds = 4;
-//----------------------------------------
-//#define LEN_MSG 160
-//static char buf_msg[ LEN_MSG + 1 ] = "Hello from module!\n";
+
+
 void my_timer_function(unsigned long data)
 {
 	int new_delay = delay_in_seconds*HZ;   
@@ -58,7 +57,7 @@ static int __init kernel_hello_irq_init(void)
 
 static void __exit kernel_hello_irq_cleanup(void)
 {
-
+	del_timer_sync(&my_timer);
 	printk(KERN_INFO "========= kernel_hello_irq module removed ==================\n");
 }
 
