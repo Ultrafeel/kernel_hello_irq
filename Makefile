@@ -31,8 +31,10 @@ TARGETDIR=target_bin
 #cd $(BUILDROOT1_BIN) 	SET PATH=$(BUILDROOT1_BIN):$(PATH)
 #PATH:=$(BUILDROOT1_BIN):$(PATH)
 
+#CC="$(CC)" LD="$(LD)" 
+#$(MAKE_OPTIONS) M=$(PWD) 
 all: BRBIN
-	make -C $(KERNEL_SRCS) $(MAKE_OPTIONS) M=$(PWD) modules
+	make ARCH=arm CC="$(CC)" LD="$(LD)" -C $(KERNEL_SRCS) modules
 
 #	mkdir -p ./$(TARGETDIR)/lib/modules/$(KERNEL_VERSION)/
 #	cp kernel_hello_irq.ko ./$(TARGETDIR)/lib/modules/$(KERNEL_VERSION)/
