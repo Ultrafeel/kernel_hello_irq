@@ -30,11 +30,14 @@ TARGETDIR=target_bin
 #arm-cortex_a8-linux-gnueabihf-
 #cd $(BUILDROOT1_BIN) 	SET PATH=$(BUILDROOT1_BIN):$(PATH)
 #PATH:=$(BUILDROOT1_BIN):$(PATH)
+PATH:=/home/unencr/Prog_projects/raspberr_pi/PromwadoCabanitos/buildroot/output/host/usr/bin/:$(PATH)
+
+
 
 #CC="$(CC)" LD="$(LD)" 
 #$(MAKE_OPTIONS) M=$(PWD) 
 all: BRBIN
-	make ARCH=arm CC="$(CC)" LD="$(LD)" -C $(KERNEL_SRCS) modules
+	make $(TARGET_CONFIGURE_OPTS) ARCH=arm CROSS_COMPILE=arm-buildroot-linux-uclibcgnueabihf- PATH=$(PATH) CC="$(CC)" LD="$(LD)" -C $(KERNEL_SRCS) modules
 
 #	mkdir -p ./$(TARGETDIR)/lib/modules/$(KERNEL_VERSION)/
 #	cp kernel_hello_irq.ko ./$(TARGETDIR)/lib/modules/$(KERNEL_VERSION)/
@@ -44,7 +47,7 @@ all: BRBIN
 #	cp test.sh ./$(TARGETDIR)/root/
 
 BRBIN:
-	echo ARCH= $(ARCH) CROSS_COMPILE= $(CROSS_COMPILE) ARCH= $(ARCH) M= $(M)
+	echo == TARGET_CONFIGURE_OPTS = $(TARGET_CONFIGURE_OPTS) == ARCH= $(ARCH) CROSS_COMPILE= $(CROSS_COMPILE) KERNEL_ARCH= $(KERNEL_ARCH) M= $(M)
 
 #echo MAKE_OPTIONS = $(MAKE_OPTIONS)
 
